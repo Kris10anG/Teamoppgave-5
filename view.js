@@ -1,12 +1,17 @@
+let wrapper;
+let typewriter;
+let buttonContainer;
+let pauseBtn;
+
 show();
 function show() {
     let html = '';
     main.innerHTML = html;
 
-    const wrapper = createElem("div", main, null, "class", "wrapper");
-    const typewriter = createElem("div", wrapper, null, "class", "typewriter");
-    const buttonContainer = createElem("div", typewriter, null, "class", "button-container");
-    const pauseBtn = document.createElement("div");
+    wrapper = createElem("div", main, null, "class", "wrapper");
+    typewriter = createElem("div", wrapper, null, "class", "typewriter");
+    buttonContainer = createElem("div", typewriter, null, "class", "button-container");
+    pauseBtn = document.createElement("div");
     pauseBtn.setAttribute("class", "pause-btn");
 
     for (let i = 0; i < sounds.names.length; i++) {
@@ -14,11 +19,14 @@ function show() {
         let soundPath = sounds.paths[i];
         let sound = new Audio(soundPath);
         
-        const btn = createElem("button", buttonContainer, soundName, "class", "big-button");
+        let btn = createElem("button", buttonContainer, soundName, "class", "big-button");
     
         sound.addEventListener('play', function() { 
             buttonContainer.classList.add("animate-text");
             buttonContainer.appendChild(pauseBtn);
+            pauseBtn.addEventListener("click", function() {
+                sound.pause();
+            });
         });
 
         sound.addEventListener('pause', function() {
@@ -30,6 +38,7 @@ function show() {
             sound.play();
         });
     };
+
 }
 
 /**

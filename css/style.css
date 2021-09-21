@@ -10,12 +10,12 @@
 @font-face {
     font-family: raskhal;
     src: url('../fonts/RASKHAL.ttf');
-  }
+}
 
 @font-face {
     font-family: neon;
     src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
-  }
+}
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
 * {
@@ -77,11 +77,31 @@ body {
       color: #28D7FE;
 }
 
+.button-container::before {
+    content: "Magic Machine";
+    position: absolute;
+    left: 100px;
+    color: #426DFB;
+    bottom: -100px;
+    font-size: 2em;
+    font-family: neon;
+    letter-spacing: .1em;
+    text-shadow: 0 0 1vw #d710ff, 0 0 3vw #b100a8, 0 0 10vw #ff10ff, 0 0 10vw #e600e6, 0 0 .4vw #c000da, .5vw .5vw .1vw #b800be;
+    color: #28D7FE;
+}
+
 .animate-text::after {
     animation: flux 1s linear infinite;
   -moz-animation: flux 1s linear infinite;
   -webkit-animation: flux 1s linear infinite;
   -o-animation: flux 1s linear infinite;
+}
+
+.animate-text::before {
+    animation: magic-machine 1.5s linear infinite;
+  -moz-animation: magic-machine 1.5s linear infinite;
+  -webkit-animation: magic-machine 1.5s linear infinite;
+  -o-animation: magic-machine 1.5s linear infinite;
 }
 
 .pause-btn {
@@ -92,6 +112,7 @@ body {
     position: absolute;
     top: -130px;
     left: -20px;
+    cursor: pointer;
 }
 
 @keyframes flux {
@@ -104,7 +125,21 @@ body {
       text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
       color: #146C80;
     }
-  }
+}
+
+@keyframes magic-machine {
+    0%,
+    100% {
+        text-shadow: 0 0 1vw #d710ff, 0 0 3vw #b100a8, 0 0 10vw #ff10ff, 0 0 10vw #e600e6, 0 0 .4vw #ed68ff, .5vw .5vw .1vw #b800be;
+      color: #28D7FE;
+      transform: translateX(-100px);
+    }
+    50% {
+        text-shadow: 0 0 1vw #d710ff, 0 0 3vw #b100a8, 0 0 10vw #ff10ff, 0 0 10vw #e600e6, 0 0 .4vw #c000da, .5vw .5vw .1vw #b800be;
+      color: #146C80;
+      transform: translateX(100px);
+    }
+}
 
 button {
     position: relative;
@@ -165,8 +200,8 @@ button.big-button:active::before {
 }
 
 .play-img {
-background: url('/img/joes.png');
-background-size: cover;
-width: 678px;
-height: 676px;
+    background: url('/img/joes.png');
+    background-size: cover;
+    width: 678px;
+    height: 676px;
 }
